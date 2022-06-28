@@ -1,0 +1,37 @@
+{% extends 'baselogin.html' %}
+{% block title %}Parking User{% endblock title %}
+{% block form %}
+
+
+<div class="row">
+
+<div class="col-md-4"></div>
+<div class="col-md-4">
+    <center><h2><br>Add Parking User</h2></center>
+    <form action="/addparkinguser" method="post">
+        {% include "message.html" %}
+        <div class="form-group">
+            <input type="text" class="form-control mt-3" placeholder="Enter Parking Code" name="pcode" required>
+        </div>
+
+        <div class="form-group">
+            <input type="email" class="form-control mt-3" placeholder="Enter Email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control mt-3" placeholder="Password" name="password" required>
+        </div>
+
+        <br>
+        <center><button type="submit" class="btn btn-info bg-dark text-light ">Add</button> &nbsp; <a href="/logoutadmin" type="submit" class="btn btn-info bg-dark text-light ">Logout</a></center>
+       
+        
+
+    </form>
+</div>
+<div class="col-md-4"></div>
+
+</div>
+
+
+{% endblock form %}

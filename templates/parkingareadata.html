@@ -1,0 +1,104 @@
+{% extends 'baselogin.html' %}
+{% block title %} Add Parking Area details {% endblock title %} 
+{% block form %}
+
+
+  <center><h2>Add Parking Area Data</h2></center>
+  <br>
+  <div class="row">
+    <div class="col-md-2">
+      
+    </div>
+    <div class="col-md-3">
+      <div class="card-block special-card" style="background-color: rgba(245, 245, 245, 0.2)">
+ 
+        {% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category,message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+        
+
+        <div class="card-body">
+          <h2 class="text-center">SKIE PARKING</h2>
+          <form action="/addpainfo" method="post">
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control mt-2"
+                name="pcode"
+                placeholder="Enter the Parking Area Code"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control mt-2"
+                name="pname"
+                placeholder="Enter the Parking Area"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control mt-2"
+                name="fwslots"
+                placeholder="Available slots for 4-Wheelers"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control mt-2"
+                name="twslots"
+                placeholder="Available slots for 2-Wheelers"
+                required
+              />
+            </div>
+            <br />
+            <center>
+              <button type="submit" class="btn btn-info">Add</button>
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card-block special-card" style="background-color: rgba(245, 245, 245, 0.2)">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="static/assets/img/card.jpg" class="img" alt="..." width="220" height="330">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <center><h2 class="card-title">Parking Area Data</h2></center>
+              <div class="card" style="width: 24rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Parking Area Code: <b>{{postsdata.pcode}}</b> </li>
+                  <li class="list-group-item">Parking Area Name: <b>{{postsdata.pname}}</b> </li>
+                  <li class="list-group-item">4-Wheeler Parking slots Available: <b>{{postsdata.fwslots}}</b> </li>
+                  <li class="list-group-item">2-Wheeler Parking slots Available: <b>{{postsdata.twslots}}</b> </li>
+                  <li class="list-group-item"><a href="/hedit/{{postsdata.id}}"><i class="fas fa-edit"></i></a> </i>
+                    <a class="ml-4" confirm('Are you sure to Delete data'); href="/hdelete/{{postsdata.id}}"><i class="fas fa-trash-alt"></i></a>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock form %}

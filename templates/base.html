@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %}{% endblock title %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Day - v4.7.0
+  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope-fill"></i><a href="mailto:bhuvan0127@gmail.com">bhuvan0127@gmail.com</a>
+        <i class="bi bi-phone-fill phone-icon"></i> +91 82771 11255
+      </div>
+      <div class="social-links d-none d-md-block">
+        <a href="https://www.facebook.com/abhi.ap.3363" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/bhuvan0127/" class="instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">Skie Parking</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+         {% if current_user.is_authenticated and current_user.pcode %}
+            <li class="dropdown"><a href="#"><span>Welcome {{current_user.email}}</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="/addpainfo">Add Parking Area</a></li>
+                <li><a href="/logout">Logout</a></li>
+
+              </ul>
+            </li>
+          
+          {% elif current_user.is_authenticated and current_user.email%}
+            <li class="dropdown"><a href="#"><span>Welcome {{current_user.email}}</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="/slotbooking">Book Parking Slot</a></li>
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </li>
+            {% else %}
+            <li class="dropdown"><a href="#"><span>Sign in</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="/login">User Sign In</a></li>
+                <li><a href="/admin">Admin Sign In</a></li>
+                <li><a href="/parkinglogin">Parking Area </a></li>
+              </ul>
+            </li>  
+
+          {% endif %}
+          
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      <h1>Welcome to Skie Parking</h1>
+      <h2>The 1'st parking website in Mysore</h2>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+{% block form %}
+
+{% endblock form %}
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+            <img src="static/assets/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+            <h3>Welcome to the 1'st Parking website in Mysore</h3>
+            <p class="fst-italic">
+              A website developed by the students of The National Institute of Engineering
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Safe Parking.</li>
+              <li><i class="bi bi-check-circle"></i> Cost-efficient Parking.</li>
+              <li><i class="bi bi-check-circle"></i> Parking available all over Mysore.</li>
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+
+ 
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h1 style="color: aliceblue;" >Available Slots</h1>
+          <p>Parking areas with the number of two-wheeler and four-wheeler slots in the respective parking area.</p>
+          <a class="cta-btn" href="/avail">Click To View</a>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Pricing</span>
+          <h2>Pricing</h2>
+  
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
+            <div class="box">
+              <h3>Non-Member</h3><br>
+              <h4><sup>&#8377;</sup>0<span> / month</span></h4><br><br>
+              <ul>
+                <li>Secure Parking</li><br>
+                <li>Charges/hour : &#8377;15</li><br>
+                
+                <li class="na">Windshield Cleanig</li><br>
+                <li class="na">Valet Parking</li><br>
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in">
+            <div class="box featured">
+              <h3>Premium Member</h3><br>
+              <h4><sup>&#8377;</sup>350<span> / month</span></h4><br><br>
+              <ul>
+                <li>Secure Parking</li><br>
+                <li>Charges/hour : &#8377;10</li><br>
+                <li>Windshield Cleanig</li><br>
+                <li>Valet Parking</li><br>
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+            <div class="box">
+              <h3>Member</h3><br>
+              <h4><sup>&#8377;</sup>200<span> / month</span></h4><br><br>
+              <ul>
+                <li>Secure Parking</li><br>
+                <li>Charges/hour : &#8377;13</li><br>
+                <li>Windshield Cleanig</li><br>
+                <li class="na">Valet Parking</li><br>
+
+              </ul>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Team</span>
+          <h2>Team</h2>
+          
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="static/assets/img/team/team-1.jpg" alt="">
+              <h4>Abhishek A P</h4>
+              <span>Web Designer</span>
+
+              <div class="social">
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="static/assets/img/team/team-2.jpg" alt="">
+              <h4>Bhargav N Gowda</h4>
+              <span>Project Advisor</span>
+
+              <div class="social">
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="static/assets/img/team/team-3.jpg" alt="">
+              <h4>Bhuvan K</h4>
+              <span>Database Developer</span>
+
+              <div class="social">
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Contact</span>
+          <h2>Contact</h2>
+          <p>Thanks for choosing us. Please contact us in case of emergency.</p>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Our Address</h3>
+              <p>The National Institute of Engineering, 
+                Mysore</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>bhuvan0127@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+91 88846 42347</p>
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            
+          </div>
+
+
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <div class="footer-info">
+                <h3>Skie Parking</h3>
+                <p>
+                  The National Institute of Engineering <br>
+                  Manandavadi Road, Vidyaranyapuram<br>
+                  Mysore, Karnataka
+                  India<br><br>
+                  <strong>Phone:</strong> +91 88846 42347<br>
+                  <strong>Email:</strong> bhuvan0127@gmail.com<br>
+                </p>
+                <div class="social-links mt-3">
+
+                  <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                  <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+
+                </div>
+              </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Day</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/aos/aos.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
